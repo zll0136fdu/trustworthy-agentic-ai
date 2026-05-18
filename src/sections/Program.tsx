@@ -127,20 +127,6 @@ const speakers = [
   },
 ];
 
-const discussionQuestions = [
-  "What counts as a valid attack success case for ubiquitous agent systems?",
-  "Which logs, signals, or traces are needed to assess execution safety?",
-  "How precise must a repair be for agents that still need to remain useful in daily settings?",
-  "How can benchmarks balance realism, repeatability, and risk coverage?",
-];
-
-const expectedOutcomes = [
-  "Reviewed materials and slides shared where permissions allow",
-  "A short public summary of open questions and lessons learned",
-  "Challenge resources kept online for reuse after the workshop",
-  "Reusable task definitions and clearer evaluation metrics for future work",
-];
-
 const typeStyles: Record<string, { border: string; bg: string; iconColor: string }> = {
   opening: { border: "#05966940", bg: "#05966908", iconColor: "#059669" },
   keynote: { border: "#2563EB40", bg: "#2563EB08", iconColor: "#2563EB" },
@@ -321,44 +307,8 @@ export default function Program() {
           <div className="inline-block rounded-xl p-6 max-w-2xl" style={{ background: "rgba(37, 99, 235, 0.05)", border: "1px solid rgba(37, 99, 235, 0.15)" }}>
             <h4 className="text-white font-semibold mb-2">Open Workshop Policy</h4>
             <p className="text-[#94A3B8] text-sm leading-relaxed">
-              The workshop is planned as an open, in-person event. Registered UbiComp/ISWC attendees may join without a paper submission, subject to workshop registration and room capacity. We expect 30-45 participants from UbiComp/ISWC researchers, agent system builders, and trustworthy AI researchers.
+              The workshop is planned as an open, in-person event. UbiComp/ISWC attendees may join without a paper submission, subject to registration and room capacity. We expect 30–45 participants from UbiComp/ISWC researchers, agent system builders, and trustworthy AI researchers.
             </p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-          <div className="rounded-xl p-6 bg-white/[0.02] border border-white/5">
-            <h4 className="text-white font-semibold mb-4">
-              Discussion Questions
-            </h4>
-            <ul className="space-y-3">
-              {discussionQuestions.map((question) => (
-                <li
-                  key={question}
-                  className="flex items-start gap-3 text-[#94A3B8] text-sm leading-relaxed"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB] mt-2 shrink-0" />
-                  {question}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="rounded-xl p-6 bg-white/[0.02] border border-white/5">
-            <h4 className="text-white font-semibold mb-4">
-              Expected Outcomes
-            </h4>
-            <ul className="space-y-3">
-              {expectedOutcomes.map((outcome) => (
-                <li
-                  key={outcome}
-                  className="flex items-start gap-3 text-[#94A3B8] text-sm leading-relaxed"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#F59E0B] mt-2 shrink-0" />
-                  {outcome}
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
       </div>

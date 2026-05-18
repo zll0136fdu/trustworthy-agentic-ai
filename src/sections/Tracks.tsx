@@ -58,12 +58,6 @@ const tracks = [
   },
 ];
 
-const trackFlow = [
-  "Track 1 studies how failures are triggered through attacks and unsafe instructions.",
-  "Track 2 studies how failures surface in execution traces, tool calls, and recovery behavior.",
-  "Track 3 studies how known unsafe behavior can be repaired without broad capability loss.",
-];
-
 export default function Tracks() {
   const sectionRef = useRef<HTMLElement>(null);
   const [activeTrack, setActiveTrack] = useState(1);
@@ -116,28 +110,6 @@ export default function Tracks() {
             The workshop includes a challenge program designed to make the links between attack, monitoring, and repair concrete and comparable under shared tasks.
           </p>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
-          {trackFlow.map((item, index) => (
-            <div
-              key={item}
-              className="rounded-xl p-5 bg-white/[0.02] border border-white/5"
-            >
-              <span className="font-mono text-xs text-[#64748B]">
-                0{index + 1}
-              </span>
-              <p className="text-[#CBD5E1] text-sm leading-relaxed mt-2">
-                {item}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        <p className="text-center text-sm text-[#94A3B8] max-w-3xl mx-auto mb-12 leading-relaxed">
-          Shared tasks give participants a common basis for comparing attack scenarios,
-          execution logs, monitoring signals, and targeted repair methods across the
-          same agent-safety problem.
-        </p>
 
         {/* Desktop: Side-by-side with active expansion */}
         <div className="hidden lg:flex gap-4 items-stretch min-h-[520px]">

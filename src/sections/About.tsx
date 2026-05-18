@@ -32,17 +32,6 @@ const cards = [
   },
 ];
 
-const motivations = [
-  {
-    label: "Why now",
-    text: "Mobile, wearable, and web agents are becoming capable enough to affect messaging, purchases, navigation, privacy decisions, and access to sensitive contexts.",
-  },
-  {
-    label: "Why UbiComp",
-    text: "Ubiquitous systems are context-aware, multi-device, and action-oriented, so safety must include plans, permissions, tool use, and interaction with digital and physical environments.",
-  },
-];
-
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
@@ -87,22 +76,6 @@ export default function About() {
           <p className="text-lg text-[#94A3B8] max-w-3xl mx-auto leading-relaxed">
             Agent systems are being deployed in phones, wearables, and smart spaces. Because these systems can observe context and take actions, safety depends on the whole interaction process. We need to judge not only what an agent says, but also what it sees, which tools it uses, what actions it takes, and when it should stop or ask for help.
           </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
-          {motivations.map((item) => (
-            <div
-              key={item.label}
-              className="rounded-xl p-5 bg-white/[0.02] border border-white/5"
-            >
-              <span className="text-xs font-bold uppercase tracking-wider text-[#F59E0B]">
-                {item.label}
-              </span>
-              <p className="text-[#CBD5E1] text-sm leading-relaxed mt-2">
-                {item.text}
-              </p>
-            </div>
-          ))}
         </div>
 
         {/* Cards Grid */}
