@@ -1,0 +1,60 @@
+/* App-specific enhancements */
+
+/* Smooth section transitions */
+section {
+  position: relative;
+}
+
+/* Ensure liquid glass effects work properly */
+.liquid-glass,
+.liquid-glass-strong,
+.liquid-glass-track-1,
+.liquid-glass-track-2,
+.liquid-glass-track-3 {
+  will-change: auto;
+}
+
+/* Mobile menu animation */
+.mobile-menu-enter {
+  transform: translateX(100%);
+}
+
+.mobile-menu-enter-active {
+  transform: translateX(0);
+  transition: transform 0.3s ease;
+}
+
+/* Track card image overlay */
+.track-card {
+  position: relative;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Ensure images don't overflow */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Fix for iOS tap highlight */
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Better focus states */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #2563EB;
+  outline-offset: 2px;
+}
