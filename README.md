@@ -10,7 +10,7 @@
 
 ### Deploy
 
-Production domain: https://trustworthy-agentic-ai.org/
+Production URL: https://zll0136fdu.github.io/trustworthy-agentic-ai/
 
 ```bash
 npm install
