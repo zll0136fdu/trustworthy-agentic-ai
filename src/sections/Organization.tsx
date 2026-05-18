@@ -13,7 +13,7 @@ const organizers = [
     affil: "TeleAI, China Telecom; Northwestern Polytechnical University",
     role: "General Co-Chair",
     roleColor: "#2563EB",
-    bio: "Works on trustworthy AI, model governance, and safety evaluation. Coordinates the workshop and challenge design.",
+    bio: "Works on trustworthy AI, model governance, and safety evaluation. Leads the workshop and challenge design.",
   },
   {
     initials: "TZ",
@@ -21,7 +21,7 @@ const organizers = [
     affil: "TeleAI, China Telecom",
     role: "General Co-Chair",
     roleColor: "#2563EB",
-    bio: "Works on robustness, verification, and evaluation for intelligent systems. Supports reliable evaluation and safety guarantees.",
+    bio: "Works on robustness, verification, and evaluation for intelligent systems. Supports reliable evaluation methods and safety assurance.",
   },
   {
     initials: "HZ",
@@ -29,7 +29,7 @@ const organizers = [
     affil: "USTC; TeleAI",
     role: "Challenge Chair",
     roleColor: "#F59E0B",
-    bio: "Works on multimodal foundation models and diffusion-model safety. Contributes to the attack track and challenge setup.",
+    bio: "Works on multimodal foundation models and diffusion-model safety. Contributes to challenge design and attack-track setup.",
   },
   {
     initials: "WC",
@@ -37,7 +37,7 @@ const organizers = [
     affil: "CAICT",
     role: "Challenge Chair",
     roleColor: "#F59E0B",
-    bio: "Works on large-model safety benchmarking, evaluation, and standards. Brings industrial-scale assessment experience.",
+    bio: "Works on large-model safety benchmarking, evaluation, and standards. Brings experience in industrial-scale assessment.",
   },
   {
     initials: "JC",
@@ -45,7 +45,7 @@ const organizers = [
     affil: "CAICT",
     role: "Challenge Chair",
     roleColor: "#F59E0B",
-    bio: "Works on AI security, agent security assessment, and industrial testing. Contributes enterprise AI evaluation experience.",
+    bio: "Works on AI security, agent security assessment, and industrial testing. Contributes practical experience in enterprise AI evaluation.",
   },
   {
     initials: "FW",
@@ -53,7 +53,7 @@ const organizers = [
     affil: "CAICT",
     role: "Challenge Chair",
     roleColor: "#F59E0B",
-    bio: "Works on evaluation, benchmarking, and standardization for LLM and AI agent safety and security.",
+    bio: "Works on evaluation, benchmarking, and standardization for LLM and AI-agent safety.",
   },
   {
     initials: "LZ",
@@ -61,7 +61,7 @@ const organizers = [
     affil: "USTC",
     role: "PC Member",
     roleColor: "#7C3AED",
-    bio: "Professor working on mobile sensing, data privacy protection, and data sharing. Multiple papers in top mobile and ubiquitous computing venues.",
+    bio: "Professor working on mobile sensing, data privacy protection, and data sharing, with publications in leading mobile and ubiquitous computing venues.",
   },
   {
     initials: "ZW",
@@ -69,7 +69,7 @@ const organizers = [
     affil: "Zhejiang University",
     role: "PC Member",
     roleColor: "#7C3AED",
-    bio: "Professor working on intelligent IoT, AI security, data security, and privacy protection. Strong expertise in security systems and large-scale deployment.",
+    bio: "Professor working on intelligent IoT, AI security, data security, and privacy protection, with expertise in secure systems and large-scale deployment.",
   },
   {
     initials: "XL",
@@ -77,7 +77,7 @@ const organizers = [
     affil: "TeleAI, China Telecom",
     role: "Senior Advisor",
     roleColor: "#059669",
-    bio: "Supports large-scale deployment, industry links, and community outreach.",
+    bio: "Advises on large-scale deployment, industry engagement, and community outreach.",
   },
 ];
 

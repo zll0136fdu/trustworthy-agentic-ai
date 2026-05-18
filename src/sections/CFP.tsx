@@ -19,16 +19,24 @@ const topics = [
 const submissionTypes = [
   {
     icon: FileText,
-    title: "Archival Papers",
-    description:
-      "2–4 pages (excluding references), ACM double-column template, published in ACM Digital Library",
+    title: "Archival Workshop Papers",
+    description: "2-4 pages, excluding references, in the ACM double-column format.",
+    details: [
+      "Lightly reviewed for relevance, clarity, technical quality, and discussion value",
+      "Suitable for mature early results, benchmarks, methods, and system studies",
+      "Planned for archival publication, subject to ACM and UbiComp/ISWC proceedings rules",
+    ],
     borderColor: "#2563EB",
   },
   {
     icon: Presentation,
-    title: "Non-Archival",
-    description:
-      "1-page participation statements or posters, presented at the workshop, not formally archived",
+    title: "Non-Archival Participation",
+    description: "1-page participation statement or poster, presented at the workshop.",
+    details: [
+      "Suitable for early ideas, benchmark proposals, demos, negative results, and system observations",
+      "Designed for discussion and community feedback rather than formal archival publication",
+      "Accepted contributions may be presented as posters or short discussion inputs",
+    ],
     borderColor: "#F59E0B",
   },
 ];
@@ -159,6 +167,20 @@ export default function CFP() {
                     <p className="text-[#94A3B8] text-sm leading-relaxed">
                       {type.description}
                     </p>
+                    <ul className="mt-4 space-y-2">
+                      {type.details.map((detail) => (
+                        <li
+                          key={detail}
+                          className="flex items-start gap-2 text-xs leading-relaxed text-[#CBD5E1]"
+                        >
+                          <span
+                            className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0"
+                            style={{ background: type.borderColor }}
+                          />
+                          {detail}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 );
               })}
@@ -175,14 +197,15 @@ export default function CFP() {
               Submissions will go through a light review process evaluating relevance, clarity, technical quality, and discussion value. Accepted work will be presented as{" "}
               <span className="text-white font-medium">short oral spotlights</span>{" "}
               or{" "}
-              <span className="text-white font-medium">posters</span>. The short paper length lowers the barrier for new work, early benchmarks, and negative results.
+              <span className="text-white font-medium">posters</span>. We expect roughly{" "}
+              <span className="text-white font-medium">10-15 accepted submissions</span>, with selected contributions invited for oral presentation and the rest presented as posters. The short paper length lowers the barrier for new work, early benchmarks, and negative results.
             </p>
           </div>
 
           {/* CTA */}
           <div className="mt-10 pt-8 border-t border-white/5 flex flex-wrap items-center justify-between gap-4">
-            <p className="text-[#64748B] text-sm">
-              Ready to contribute? Submit through the official system.
+            <p className="text-[#64748B] text-sm max-w-xl">
+              Ready to contribute? The submission link will be posted here once the official system is ready.
             </p>
             <button
               type="button"
