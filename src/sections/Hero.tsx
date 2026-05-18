@@ -64,7 +64,10 @@ export default function Hero() {
       {/* Shanghai Skyline Background */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url(/images/shanghai-skyline.png)" }}
+        style={{
+          backgroundImage:
+            "url(/trustworthy-agentic-ai/images/shanghai-skyline.png)",
+        }}
       />
 
       {/* Gradient overlays */}

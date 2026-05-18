@@ -20,7 +20,7 @@ const tracks = [
     color: "#DC2626",
     bgClass: "liquid-glass-track-1",
     glowClass: "animate-glow-red",
-    image: "/images/track1-attack.jpg",
+    image: "/trustworthy-agentic-ai/images/track1-attack.jpg",
   },
   {
     id: 2,
@@ -37,7 +37,7 @@ const tracks = [
     color: "#059669",
     bgClass: "liquid-glass-track-2",
     glowClass: "animate-glow-green",
-    image: "/images/track2-safety.jpg",
+    image: "/trustworthy-agentic-ai/images/track2-safety.jpg",
   },
   {
     id: 3,
@@ -54,7 +54,7 @@ const tracks = [
     color: "#7C3AED",
     bgClass: "liquid-glass-track-3",
     glowClass: "animate-glow-purple",
-    image: "/images/track3-alignment.jpg",
+    image: "/trustworthy-agentic-ai/images/track3-alignment.jpg",
   },
 ];
 
