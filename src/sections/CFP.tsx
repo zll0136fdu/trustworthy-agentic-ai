@@ -74,18 +74,6 @@ export default function CFP() {
         },
       });
 
-      gsap.from(".sub-type-card", {
-        y: 30,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.15,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".sub-types-grid",
-          start: "top 80%",
-          once: true,
-        },
-      });
     }, section);
 
     return () => ctx.revert();
