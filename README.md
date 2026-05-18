@@ -10,12 +10,8 @@
 
 ### Deploy
 
-Production URL: https://zll0136fdu.github.io/trustworthy-agentic-ai/
-
 ```bash
 npm install
 npm run build
 # Deploy dist/ folder to any static hosting (GitHub Pages, Vercel, Cloudflare, etc.)
 ```
-
-GitHub Pages uses the workflow in `.github/workflows/deploy.yml`.

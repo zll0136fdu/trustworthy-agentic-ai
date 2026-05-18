@@ -60,7 +60,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-12">
       {/* Shanghai Skyline Background */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -106,31 +106,8 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        {/* Main conference affiliation badge */}
-        <div
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8"
-          style={{
-            background: "rgba(13, 27, 42, 0.6)",
-            backdropFilter: "blur(12px)",
-            border: "1px solid rgba(42, 157, 176, 0.3)",
-          }}
-        >
-          <span
-            className="w-2 h-2 rounded-full animate-pulse"
-            style={{ background: "#2A9DB0" }}
-          />
-          <span className="text-sm font-medium" style={{ color: "#A0B4C8" }}>
-            UbiComp / ISWC 2026 Affiliated Workshop
-          </span>
-        </div>
-
-        {/* WELCOME TO style text matching main conference */}
-        <p
-          className="text-lg md:text-xl font-semibold tracking-widest uppercase mb-2"
-          style={{ color: "#2A9DB0" }}
-        >
-          Welcome to
-        </p>
+        {/* Spacer to keep original position */}
+        <div className="h-8" />
 
         {/* Main Title */}
         <h1
@@ -139,16 +116,7 @@ export default function Hero() {
         >
           Towards Trustworthy
           <br />
-          <span
-            style={{
-              background:
-                "linear-gradient(90deg, #2A9DB0 0%, #5B4B8A 50%, #7C6BB3 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            Agentic AI
-          </span>
+          <span style={{ color: "#FFFFFF" }}>Agentic AI</span>
         </h1>
 
         <p

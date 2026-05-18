@@ -34,90 +34,104 @@ export default function Navigation() {
 
   return (
     <>
+      {/* Logo - transparent, no background, bottom-left of top area */}
+      <a
+        href="#"
+        className="fixed top-14 left-6 z-[60] text-white font-extrabold text-base tracking-tight hover:opacity-80 transition-opacity"
+        style={{ textShadow: "0 2px 8px rgba(0,0,0,0.6), 0 0 2px rgba(0,0,0,0.8)" }}
+        onClick={(e) => {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }}
+      >
+        TAI Workshop{" "}
+        <span style={{ color: "#2A9DB0" }}>2026</span>
+      </a>
+
+      {/* Right-side floating pill nav */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-4 right-6 z-[60] hidden md:flex items-center gap-1 px-2 py-1.5 rounded-full transition-all duration-500 ${
           scrolled
-            ? "bg-[#0D1B2A]/90 backdrop-blur-xl border-b border-white/10 shadow-lg shadow-black/20"
-            : "bg-[#0D1B2A]/60 backdrop-blur-md border-b border-white/5"
+            ? "bg-[#0D1B2A]/85 backdrop-blur-xl shadow-lg shadow-black/20 border border-white/10"
+            : "bg-[#0D1B2A]/50 backdrop-blur-md border border-white/5"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          {/* Logo */}
+        {navLinks.map((link) => (
           <a
-            href="#"
-            className="text-white font-extrabold text-lg tracking-tight hover:opacity-80 transition-opacity"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
+            key={link.href}
+            href={link.href}
+            onClick={(e) => handleNavClick(e, link.href)}
+            className="px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200 hover:bg-white/10"
+            style={{ color: "#A0B4C8" }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = "#FFFFFF";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = "#A0B4C8";
             }}
           >
-            Trustworthy Agentic AI{" "}
-            <span className="text-[#1E7A8C]">2026</span>
+            {link.label}
           </a>
-
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="text-sm font-medium text-[#A0B4C8] hover:text-white transition-colors duration-200"
-              >
-                {link.label}
-              </a>
-            ))}
-            <a
-              href="mailto:workshop-2026@ubicomp.org"
-              className="px-4 py-2 rounded-lg bg-[#1E7A8C] text-white text-sm font-semibold hover:bg-[#2A9DB0] transition-all duration-200 hover:shadow-lg hover:shadow-[#1E7A8C]/25"
-            >
-              Contact
-            </a>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-white p-2"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
+        ))}
+        <a
+          href="mailto:workshop-2026@ubicomp.org"
+          className="ml-1 px-4 py-1.5 rounded-full text-white text-sm font-semibold hover:opacity-90 transition-all duration-200"
+          style={{
+            background: "linear-gradient(135deg, #1E7A8C 0%, #2A9DB0 100%)",
+          }}
+        >
+          Contact
+        </a>
       </nav>
+
+      {/* Mobile Menu Button */}
+      <button
+        className="fixed top-4 right-6 z-[60] md:hidden p-2 rounded-lg"
+        style={{ background: "rgba(13, 27, 42, 0.7)", backdropFilter: "blur(10px)" }}
+        onClick={() => setMobileOpen(!mobileOpen)}
+        aria-label="Toggle menu"
+      >
+        {mobileOpen ? <X size={20} className="text-white" /> : <Menu size={20} className="text-white" />}
+      </button>
 
       {/* Mobile Menu Overlay */}
       {mobileOpen && (
         <div
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[55] md:hidden"
           onClick={() => setMobileOpen(false)}
         />
       )}
 
       {/* Mobile Menu */}
       <div
-        className={`fixed top-0 right-0 w-72 h-full bg-[#162D45] border-l border-white/10 z-50 transform transition-transform duration-300 md:hidden ${
+        className={`fixed top-0 right-0 w-72 h-full z-[58] md:hidden transform transition-transform duration-300 flex flex-col gap-4 p-6 pt-20 ${
           mobileOpen ? "translate-x-0" : "translate-x-full"
         }`}
+        style={{
+          background: "#162D45",
+          borderLeft: "1px solid rgba(255,255,255,0.1)",
+        }}
       >
-        <div className="p-6 pt-20 flex flex-col gap-4">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={(e) => handleNavClick(e, link.href)}
-              className="text-lg font-semibold text-[#A0B4C8] hover:text-white py-3 border-b border-white/5 transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
+        {navLinks.map((link) => (
           <a
-            href="mailto:workshop-2026@ubicomp.org"
-            className="mt-4 px-4 py-3 rounded-lg bg-[#1E7A8C] text-white text-center font-semibold hover:bg-[#2A9DB0] transition-colors"
+            key={link.href}
+            href={link.href}
+            onClick={(e) => handleNavClick(e, link.href)}
+            className="text-lg font-semibold py-3 border-b transition-colors"
+            style={{ color: "#A0B4C8", borderColor: "rgba(255,255,255,0.05)" }}
           >
-            Contact
+            {link.label}
           </a>
-        </div>
+        ))}
+        <a
+          href="mailto:workshop-2026@ubicomp.org"
+          className="mt-4 px-4 py-3 rounded-xl text-white text-center font-semibold transition-colors"
+          style={{
+            background: "linear-gradient(135deg, #1E7A8C 0%, #2A9DB0 100%)",
+          }}
+        >
+          Contact
+        </a>
       </div>
     </>
   );
