@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -62,33 +62,14 @@ export default function Tracks() {
   const sectionRef = useRef<HTMLElement>(null);
   const [activeTrack, setActiveTrack] = useState(1);
 
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    const ctx = gsap.context(() => {
-      gsap.from(".track-card", {
-        y: 80,
-        opacity: 0,
-        duration: 0.9,
-        stagger: 0.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: section,
-          start: "top 70%",
-          once: true,
-        },
-      });
-    }, section);
-
-    return () => ctx.revert();
-  }, []);
+  // Cards render directly without GSAP opacity animation
+  void sectionRef;
 
   return (
     <section
       id="challenge"
       ref={sectionRef}
-      className="relative py-24 md:py-32 bg-gradient-to-b from-[#0A1120] via-[#0F172A]/50 to-[#0A1120]"
+      className="relative py-24 md:py-32 bg-gradient-to-b from-[#0D1B2A] via-[#162D45]/50 to-[#0D1B2A]"
     >
       {/* Subtle grid pattern */}
       <div
@@ -106,7 +87,7 @@ export default function Tracks() {
           <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
             Three-Track Challenge
           </h2>
-          <p className="text-lg text-[#94A3B8] max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-[#A0B4C8] max-w-2xl mx-auto leading-relaxed">
             The workshop includes a challenge program designed to make the links between attack, monitoring, and repair concrete and comparable under shared tasks.
           </p>
         </div>
@@ -135,7 +116,7 @@ export default function Tracks() {
                 <div
                   className="absolute inset-0 transition-opacity duration-700"
                   style={{
-                    background: `linear-gradient(180deg, ${track.color}10 0%, #0A1120 70%)`,
+                    background: `linear-gradient(180deg, ${track.color}10 0%, #0D1B2A 70%)`,
                   }}
                 />
 
@@ -170,7 +151,7 @@ export default function Tracks() {
                         : "opacity-0 max-h-0"
                     }`}
                   >
-                    <p className="text-[#94A3B8] text-sm leading-relaxed mb-6">
+                    <p className="text-[#A0B4C8] text-sm leading-relaxed mb-6">
                       {track.description}
                     </p>
 
@@ -178,7 +159,7 @@ export default function Tracks() {
                       {track.topics.map((topic) => (
                         <li
                           key={topic}
-                          className="flex items-start gap-3 text-sm text-[#CBD5E1]"
+                          className="flex items-start gap-3 text-sm text-[#B8C8D8]"
                         >
                           <span
                             className="w-1.5 h-1.5 rounded-full mt-2 shrink-0"
@@ -215,7 +196,7 @@ export default function Tracks() {
                 <div
                   className="absolute inset-0"
                   style={{
-                    background: `linear-gradient(180deg, transparent 0%, #0A1120 100%)`,
+                    background: `linear-gradient(180deg, transparent 0%, #0D1B2A 100%)`,
                   }}
                 />
               </div>
@@ -234,14 +215,14 @@ export default function Tracks() {
                 <h3 className="text-xl font-bold text-white mb-3">
                   {track.title}
                 </h3>
-                <p className="text-[#94A3B8] text-sm leading-relaxed mb-4">
+                <p className="text-[#A0B4C8] text-sm leading-relaxed mb-4">
                   {track.description}
                 </p>
                 <ul className="space-y-2">
                   {track.topics.map((topic) => (
                     <li
                       key={topic}
-                      className="flex items-start gap-3 text-sm text-[#CBD5E1]"
+                      className="flex items-start gap-3 text-sm text-[#B8C8D8]"
                     >
                       <span
                         className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0"

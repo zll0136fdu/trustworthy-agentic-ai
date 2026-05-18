@@ -6,43 +6,42 @@
 
 @layer base {
   :root {
-    --background: 222 47% 7%;
+    --background: 220 30% 10%;
     --foreground: 0 0% 100%;
-    --card: 222 47% 11%;
+    --card: 220 30% 13%;
     --card-foreground: 0 0% 100%;
-    --popover: 222 47% 11%;
+    --popover: 220 30% 13%;
     --popover-foreground: 0 0% 100%;
-    --primary: 217 91% 60%;
+    --primary: 192 65% 33%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 215 25% 27%;
+    --secondary: 220 25% 25%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 215 25% 27%;
+    --muted: 220 25% 25%;
     --muted-foreground: 215 20% 65%;
-    --accent: 217 91% 60%;
+    --accent: 192 65% 33%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 215 25% 20%;
-    --input: 215 25% 20%;
-    --ring: 217 91% 60%;
+    --border: 220 25% 22%;
+    --input: 220 25% 22%;
+    --ring: 192 65% 33%;
     --radius: 0.75rem;
 
-    /* Brand Colors */
-    --primary-dark: #0F172A;
-    --accent-blue: #2563EB;
-    --accent-amber: #F59E0B;
-    --accent-purple: #7C3AED;
-    --surface: #0A1120;
+    /* Brand Colors - matching UbiComp/ISWC 2026 main conference */
+    --primary-teal: #1E7A8C;
+    --primary-teal-light: #2A9DB0;
+    --primary-purple: #5B4B8A;
+    --primary-purple-light: #7C6BB3;
+    --surface: #0D1B2A;
+    --surface-light: #162D45;
     --text-primary: #FFFFFF;
-    --text-secondary: #94A3B8;
+    --text-secondary: #A0B4C8;
 
     /* Track Colors */
-    --track1: #DC2626;
-    --track2: #059669;
+    --track1: #C0392B;
+    --track2: #27AE60;
     --track3: #7C3AED;
 
-    /* Liquid Glass */
-    --liquid-bg: rgba(15, 23, 42, 0.4);
     --pointer-x: 50%;
     --pointer-y: 50%;
   }
@@ -61,132 +60,7 @@
   }
 }
 
-/* =========================================
-   LIQUID GLASS SYSTEM
-   ========================================= */
-
 @layer components {
-  .liquid-glass {
-    background: rgba(255, 255, 255, 0.01);
-    background-blend-mode: luminosity;
-    backdrop-filter: blur(6px) saturate(140%);
-    -webkit-backdrop-filter: blur(6px) saturate(140%);
-    border: none;
-    box-shadow:
-      inset 0 1px 1px rgba(255, 255, 255, 0.1),
-      0 8px 32px rgba(0, 0, 0, 0.15);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .liquid-glass::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1.4px;
-    background: linear-gradient(180deg,
-      rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.15) 20%,
-      rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%,
-      rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.5) 100%);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-    mix-blend-mode: screen;
-    opacity: 0.25;
-  }
-
-  .liquid-glass::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background:
-      radial-gradient(
-        120% 80% at var(--pointer-x, 50%) var(--pointer-y, 20%),
-        rgba(255,255,255,0.08) 0%,
-        rgba(255,255,255,0.02) 40%,
-        transparent 100%
-      ),
-      radial-gradient(
-        100% 60% at var(--pointer-x, 50%) var(--pointer-y, 20%),
-        rgba(255,255,255,0.06) 0%,
-        transparent 60%
-      );
-    mix-blend-mode: overlay;
-    pointer-events: none;
-  }
-
-  /* Liquid Glass Strong - for panels */
-  .liquid-glass-strong {
-    background: rgba(15, 23, 42, 0.55);
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow:
-      inset 0 1px 1px rgba(255, 255, 255, 0.12),
-      0 8px 32px rgba(0, 0, 0, 0.25);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .liquid-glass-strong::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1.4px;
-    background: linear-gradient(180deg,
-      rgba(37, 99, 235, 0.3) 0%, rgba(37, 99, 235, 0.1) 20%,
-      rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%,
-      rgba(245, 158, 11, 0.1) 80%, rgba(245, 158, 11, 0.3) 100%);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-    mix-blend-mode: screen;
-    opacity: 0.2;
-  }
-
-  /* Track accent cards */
-  .liquid-glass-track-1 {
-    background: rgba(220, 38, 38, 0.08);
-    backdrop-filter: blur(12px) saturate(140%);
-    -webkit-backdrop-filter: blur(12px) saturate(140%);
-    border: 1px solid rgba(220, 38, 38, 0.2);
-    box-shadow:
-      inset 0 1px 1px rgba(220, 38, 38, 0.1),
-      0 4px 24px rgba(220, 38, 38, 0.1);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .liquid-glass-track-2 {
-    background: rgba(5, 150, 105, 0.08);
-    backdrop-filter: blur(12px) saturate(140%);
-    -webkit-backdrop-filter: blur(12px) saturate(140%);
-    border: 1px solid rgba(5, 150, 105, 0.2);
-    box-shadow:
-      inset 0 1px 1px rgba(5, 150, 105, 0.1),
-      0 4px 24px rgba(5, 150, 105, 0.1);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .liquid-glass-track-3 {
-    background: rgba(124, 58, 237, 0.08);
-    backdrop-filter: blur(12px) saturate(140%);
-    -webkit-backdrop-filter: blur(12px) saturate(140%);
-    border: 1px solid rgba(124, 58, 237, 0.2);
-    box-shadow:
-      inset 0 1px 1px rgba(124, 58, 237, 0.1),
-      0 4px 24px rgba(124, 58, 237, 0.1);
-    position: relative;
-    overflow: hidden;
-  }
-
-  /* Mono font for data */
   .font-mono {
     font-family: 'JetBrains Mono', monospace;
   }
@@ -205,12 +79,12 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgba(37, 99, 235, 0.3);
+    background: rgba(30, 122, 140, 0.4);
     border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(37, 99, 235, 0.5);
+    background: rgba(30, 122, 140, 0.6);
   }
 }
 
@@ -227,33 +101,15 @@
   50% { opacity: 1; }
 }
 
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes particle-drift {
-  0% { transform: translate(0, 0) scale(1); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translate(var(--drift-x, 100px), var(--drift-y, -100px)) scale(0.3); opacity: 0; }
-}
-
-@keyframes border-flow {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
-}
-
 /* Track glow animations */
 @keyframes glow-red {
-  0%, 100% { box-shadow: 0 0 20px rgba(220, 38, 38, 0.2), 0 0 40px rgba(220, 38, 38, 0.1); }
-  50% { box-shadow: 0 0 30px rgba(220, 38, 38, 0.4), 0 0 60px rgba(220, 38, 38, 0.2); }
+  0%, 100% { box-shadow: 0 0 20px rgba(192, 57, 43, 0.2), 0 0 40px rgba(192, 57, 43, 0.1); }
+  50% { box-shadow: 0 0 30px rgba(192, 57, 43, 0.4), 0 0 60px rgba(192, 57, 43, 0.2); }
 }
 
 @keyframes glow-green {
-  0%, 100% { box-shadow: 0 0 20px rgba(5, 150, 105, 0.2), 0 0 40px rgba(5, 150, 105, 0.1); }
-  50% { box-shadow: 0 0 30px rgba(5, 150, 105, 0.4), 0 0 60px rgba(5, 150, 105, 0.2); }
+  0%, 100% { box-shadow: 0 0 20px rgba(39, 174, 96, 0.2), 0 0 40px rgba(39, 174, 96, 0.1); }
+  50% { box-shadow: 0 0 30px rgba(39, 174, 96, 0.4), 0 0 60px rgba(39, 174, 96, 0.2); }
 }
 
 @keyframes glow-purple {
@@ -261,31 +117,13 @@
   50% { box-shadow: 0 0 30px rgba(124, 58, 237, 0.4), 0 0 60px rgba(124, 58, 237, 0.2); }
 }
 
-/* Glow utility classes */
-.animate-glow-red {
-  animation: glow-red 3s ease-in-out infinite;
-}
+.animate-glow-red { animation: glow-red 3s ease-in-out infinite; }
+.animate-glow-green { animation: glow-green 3s ease-in-out infinite; }
+.animate-glow-purple { animation: glow-purple 3s ease-in-out infinite; }
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
 
-.animate-glow-green {
-  animation: glow-green 3s ease-in-out infinite;
-}
-
-.animate-glow-purple {
-  animation: glow-purple 3s ease-in-out infinite;
-}
-
-/* Float utility */
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-/* Pulse glow utility */
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-/* Selection */
 ::selection {
-  background: rgba(37, 99, 235, 0.4);
+  background: rgba(30, 122, 140, 0.4);
   color: #fff;
 }

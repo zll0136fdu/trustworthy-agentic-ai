@@ -26,7 +26,7 @@ const dates = [
     highlight: false,
   },
   {
-    date: "Oct 11 or 12, 2026",
+    date: "Oct 11–12, 2026",
     event: "Workshop at UbiComp/ISWC 2026 in Shanghai",
     highlight: false,
   },
@@ -88,7 +88,7 @@ export default function Dates() {
           <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
             Important Dates
           </h2>
-          <p className="text-lg text-[#94A3B8]">
+          <p className="text-lg text-[#A0B4C8]">
             All deadlines are AoE (UTC-12). The workshop will be held on October 11 or 12, 2026 in Shanghai.
           </p>
         </div>
@@ -101,7 +101,7 @@ export default function Dates() {
               className="timeline-line absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(180deg, #2563EB 0%, #F59E0B 50%, #7C3AED 100%)",
+                  "linear-gradient(180deg, #1E7A8C 0%, #7C6BB3 50%, #7C3AED 100%)",
               }}
             />
             {/* Glow effect */}
@@ -109,7 +109,7 @@ export default function Dates() {
               className="absolute inset-0 blur-sm opacity-60"
               style={{
                 background:
-                  "linear-gradient(180deg, #2563EB 0%, #F59E0B 50%, #7C3AED 100%)",
+                  "linear-gradient(180deg, #1E7A8C 0%, #7C6BB3 50%, #7C3AED 100%)",
               }}
             />
           </div>
@@ -130,8 +130,8 @@ export default function Dates() {
                     <div
                       className={`w-4 h-4 rounded-full border-2 ${
                         item.highlight
-                          ? "bg-[#2563EB] border-[#2563EB] shadow-lg shadow-blue-500/50"
-                          : "bg-[#0A1120] border-[#475569]"
+                          ? "bg-[#1E7A8C] border-[#1E7A8C] shadow-lg shadow-[#1E7A8C]/50"
+                          : "bg-[#0D1B2A] border-[#4A6278]"
                       }`}
                     />
                   </div>
@@ -145,25 +145,25 @@ export default function Dates() {
                     <div
                       className={`rounded-xl p-5 transition-all duration-300 hover:-translate-y-1 ${
                         item.highlight
-                          ? "liquid-glass-strong border border-[#2563EB]/30"
+                          ? "liquid-glass-strong border border-[#1E7A8C]/30"
                           : "bg-white/[0.02] border border-white/5"
                       }`}
                     >
                       <div className="flex items-center justify-between flex-wrap gap-2">
                         <span
                           className={`font-mono font-bold text-base ${
-                            item.highlight ? "text-[#2563EB]" : "text-[#CBD5E1]"
+                            item.highlight ? "text-[#1E7A8C]" : "text-[#B8C8D8]"
                           }`}
                         >
                           {item.date}
                         </span>
                         {item.highlight && (
-                          <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-[#2563EB]/20 text-[#2563EB]">
+                          <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-[#1E7A8C]/20 text-[#1E7A8C]">
                             Deadline
                           </span>
                         )}
                       </div>
-                      <p className="text-[#94A3B8] text-sm mt-2">{item.event}</p>
+                      <p className="text-[#A0B4C8] text-sm mt-2">{item.event}</p>
                     </div>
                   </div>
 

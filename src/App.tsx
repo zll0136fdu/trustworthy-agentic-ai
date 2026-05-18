@@ -25,7 +25,7 @@ function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-[#0A1120] text-white overflow-x-hidden">
+    <div className="relative min-h-screen bg-[#0D1B2A] text-white overflow-x-hidden">
       {/* Particle Background */}
       <ParticleCanvas />
 

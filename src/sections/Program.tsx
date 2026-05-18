@@ -123,16 +123,16 @@ const speakers = [
     affil: "Beijing Jiaotong University (BJTU)",
     topic: "Robust & Interpretable Agent",
     track: "Invited",
-    color: "#F59E0B",
+    color: "#7C6BB3",
   },
 ];
 
 const typeStyles: Record<string, { border: string; bg: string; iconColor: string }> = {
   opening: { border: "#05966940", bg: "#05966908", iconColor: "#059669" },
-  keynote: { border: "#2563EB40", bg: "#2563EB08", iconColor: "#2563EB" },
-  break: { border: "#47556940", bg: "#47556908", iconColor: "#94A3B8" },
+  keynote: { border: "#1E7A8C40", bg: "#1E7A8C08", iconColor: "#1E7A8C" },
+  break: { border: "#4A627840", bg: "#4A627808", iconColor: "#A0B4C8" },
   spotlight: { border: "#7C3AED40", bg: "#7C3AED08", iconColor: "#7C3AED" },
-  invited: { border: "#F59E0B40", bg: "#F59E0B08", iconColor: "#F59E0B" },
+  invited: { border: "#7C6BB340", bg: "#7C6BB308", iconColor: "#7C6BB3" },
   closing: { border: "#DC262640", bg: "#DC262608", iconColor: "#DC2626" },
 };
 
@@ -157,18 +157,7 @@ export default function Program() {
         },
       });
 
-      gsap.from(".speaker-card", {
-        y: 30,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".speakers-grid",
-          start: "top 80%",
-          once: true,
-        },
-      });
+
     }, section);
 
     return () => ctx.revert();
@@ -178,7 +167,7 @@ export default function Program() {
     <section
       id="program"
       ref={sectionRef}
-      className="relative py-24 md:py-32 bg-gradient-to-b from-[#0A1120] via-[#0F172A]/30 to-[#0A1120]"
+      className="relative py-24 md:py-32 bg-gradient-to-b from-[#0D1B2A] via-[#162D45]/30 to-[#0D1B2A]"
     >
       <div className="max-w-5xl mx-auto px-6">
         {/* Section Header */}
@@ -186,14 +175,14 @@ export default function Program() {
           <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
             Workshop Program
           </h2>
-          <p className="text-lg text-[#94A3B8] max-w-2xl mx-auto">
+          <p className="text-lg text-[#A0B4C8] max-w-2xl mx-auto">
             A one-day, in-person, discussion-oriented workshop. The program combines invited talks, paper spotlights, poster sessions, and a discussion session centered on the three challenge tracks.
           </p>
         </div>
 
         {/* Tentative label */}
         <div className="text-center mb-10">
-          <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[#F59E0B]/10 text-[#F59E0B] border border-[#F59E0B]/20">
+          <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[#7C6BB3]/10 text-[#7C6BB3] border border-[#7C6BB3]/20">
             Tentative Schedule — October 11 or 12, 2026
           </span>
         </div>
@@ -234,11 +223,11 @@ export default function Program() {
                     }}
                   >
                     <div className="flex flex-wrap items-center gap-3 mb-1">
-                      <span className="font-mono text-xs text-[#64748B] font-semibold">
+                      <span className="font-mono text-xs text-[#6B8299] font-semibold">
                         {item.time}
                       </span>
                       {item.speaker && (
-                        <span className="text-xs text-[#94A3B8]">
+                        <span className="text-xs text-[#A0B4C8]">
                           {item.speaker}
                         </span>
                       )}
@@ -247,7 +236,7 @@ export default function Program() {
                       {item.title}
                     </h3>
                     {item.description && (
-                      <p className="text-[#64748B] text-sm mt-1">
+                      <p className="text-[#6B8299] text-sm mt-1">
                         {item.description}
                       </p>
                     )}
@@ -263,38 +252,37 @@ export default function Program() {
           <h3 className="text-2xl font-bold text-white mb-8 text-center">
             Invited Speakers
           </h3>
-          <p className="text-[#94A3B8] text-sm text-center mb-10 max-w-xl mx-auto">
+          <p className="text-[#A0B4C8] text-sm text-center mb-10 max-w-xl mx-auto">
             A balanced mix of verification, alignment, reasoning, and robust agent research.
           </p>
 
-          <div className="speakers-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {speakers.map((speaker) => (
               <div
                 key={speaker.name}
-                className="speaker-card rounded-xl p-5 text-center transition-all duration-300 hover:-translate-y-1"
+                className="rounded-xl p-5 text-center transition-all duration-300 hover:-translate-y-1"
                 style={{
-                  background: `${speaker.color}08`,
-                  border: `1px solid ${speaker.color}20`,
+                  background: "rgba(255,255,255,0.04)",
+                  border: "1px solid rgba(255,255,255,0.08)",
                 }}
               >
                 <div
                   className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 text-lg font-bold"
                   style={{
-                    background: `${speaker.color}15`,
+                    background: `${speaker.color}25`,
                     color: speaker.color,
-                    border: `1px solid ${speaker.color}30`,
+                    border: `1px solid ${speaker.color}50`,
                   }}
                 >
                   {speaker.track}
                 </div>
-                <h4 className="text-white font-semibold text-sm mb-1">
+                <h4 className="font-semibold text-sm mb-1" style={{ color: "#fff" }}>
                   {speaker.name}
                 </h4>
-                <p className="text-[#64748B] text-xs mb-2">{speaker.affil}</p>
-                <p
-                  className="text-xs font-medium"
-                  style={{ color: speaker.color }}
-                >
+                <p className="text-xs mb-2" style={{ color: "#6B8299" }}>
+                  {speaker.affil}
+                </p>
+                <p className="text-xs font-medium" style={{ color: speaker.color }}>
                   {speaker.topic}
                 </p>
               </div>
@@ -306,7 +294,7 @@ export default function Program() {
         <div className="mt-16 text-center">
           <div className="inline-block rounded-xl p-6 max-w-2xl" style={{ background: "rgba(37, 99, 235, 0.05)", border: "1px solid rgba(37, 99, 235, 0.15)" }}>
             <h4 className="text-white font-semibold mb-2">Open Workshop Policy</h4>
-            <p className="text-[#94A3B8] text-sm leading-relaxed">
+            <p className="text-[#A0B4C8] text-sm leading-relaxed">
               The workshop is planned as an open, in-person event. UbiComp/ISWC attendees may join without a paper submission, subject to registration and room capacity. We expect 30–45 participants from UbiComp/ISWC researchers, agent system builders, and trustworthy AI researchers.
             </p>
           </div>

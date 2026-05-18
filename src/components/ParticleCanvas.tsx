@@ -39,10 +39,10 @@ export default function ParticleCanvas() {
 
     // Initialize particles
     const colors = [
-      "rgba(37, 99, 235, ",   // blue
-      "rgba(245, 158, 11, ",  // amber
-      "rgba(124, 58, 237, ", // purple
-      "rgba(6, 182, 212, ",  // cyan
+      "rgba(30, 122, 140, ",   // teal - matching main conference
+      "rgba(91, 75, 138, ",    // purple - matching main conference
+      "rgba(42, 157, 176, ",  // teal-light
+      "rgba(124, 106, 179, ", // purple-light
     ];
 
     const createParticle = (): Particle => {

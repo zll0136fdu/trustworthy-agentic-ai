@@ -10,8 +10,6 @@ const navLinks = [
   { label: "Organization", href: "#organization" },
 ];
 
-const contactHref = "mailto:zhaojian90@u.nus.edu,zhangtianle95@gmail.com";
-
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -39,8 +37,8 @@ export default function Navigation() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-[#0A1120]/80 backdrop-blur-xl border-b border-white/5 shadow-lg shadow-black/20"
-            : "bg-transparent"
+            ? "bg-[#0D1B2A]/90 backdrop-blur-xl border-b border-white/10 shadow-lg shadow-black/20"
+            : "bg-[#0D1B2A]/60 backdrop-blur-md border-b border-white/5"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -54,7 +52,7 @@ export default function Navigation() {
             }}
           >
             Trustworthy Agentic AI{" "}
-            <span className="text-[#2563EB]">2026</span>
+            <span className="text-[#1E7A8C]">2026</span>
           </a>
 
           {/* Desktop Nav */}
@@ -64,14 +62,14 @@ export default function Navigation() {
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-sm font-medium text-[#94A3B8] hover:text-white transition-colors duration-200"
+                className="text-sm font-medium text-[#A0B4C8] hover:text-white transition-colors duration-200"
               >
                 {link.label}
               </a>
             ))}
             <a
-              href={contactHref}
-              className="px-4 py-2 rounded-lg bg-[#2563EB] text-white text-sm font-semibold hover:bg-[#1D4ED8] transition-all duration-200 hover:shadow-lg hover:shadow-blue-500/25"
+              href="mailto:workshop-2026@ubicomp.org"
+              className="px-4 py-2 rounded-lg bg-[#1E7A8C] text-white text-sm font-semibold hover:bg-[#2A9DB0] transition-all duration-200 hover:shadow-lg hover:shadow-[#1E7A8C]/25"
             >
               Contact
             </a>
@@ -98,7 +96,7 @@ export default function Navigation() {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed top-0 right-0 w-72 h-full bg-[#0F172A] border-l border-white/10 z-50 transform transition-transform duration-300 md:hidden ${
+        className={`fixed top-0 right-0 w-72 h-full bg-[#162D45] border-l border-white/10 z-50 transform transition-transform duration-300 md:hidden ${
           mobileOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -108,14 +106,14 @@ export default function Navigation() {
               key={link.href}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              className="text-lg font-semibold text-[#94A3B8] hover:text-white py-3 border-b border-white/5 transition-colors"
+              className="text-lg font-semibold text-[#A0B4C8] hover:text-white py-3 border-b border-white/5 transition-colors"
             >
               {link.label}
             </a>
           ))}
           <a
-            href={contactHref}
-            className="mt-4 px-4 py-3 rounded-lg bg-[#2563EB] text-white text-center font-semibold hover:bg-[#1D4ED8] transition-colors"
+            href="mailto:workshop-2026@ubicomp.org"
+            className="mt-4 px-4 py-3 rounded-lg bg-[#1E7A8C] text-white text-center font-semibold hover:bg-[#2A9DB0] transition-colors"
           >
             Contact
           </a>

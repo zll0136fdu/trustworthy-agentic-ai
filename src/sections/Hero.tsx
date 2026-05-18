@@ -3,11 +3,21 @@ import { Calendar, MapPin, Building2, ChevronRight } from "lucide-react";
 
 function CountdownUnit({ value, label }: { value: number; label: string }) {
   return (
-    <div className="liquid-glass-strong rounded-xl px-5 py-4 min-w-[80px] text-center">
-      <span className="block text-3xl md:text-4xl font-extrabold text-[#2563EB] font-mono tabular-nums leading-none">
+    <div
+      className="rounded-xl px-5 py-4 min-w-[80px] text-center"
+      style={{
+        background: "rgba(13, 27, 42, 0.7)",
+        backdropFilter: "blur(12px)",
+        border: "1px solid rgba(255,255,255,0.12)",
+      }}
+    >
+      <span
+        className="block text-3xl md:text-4xl font-extrabold font-mono tabular-nums leading-none"
+        style={{ color: "#2A9DB0" }}
+      >
         {String(value).padStart(2, "0")}
       </span>
-      <span className="block text-xs uppercase tracking-wider text-[#94A3B8] mt-2 font-medium">
+      <span className="block text-xs uppercase tracking-wider text-[#A0B4C8] mt-2 font-medium">
         {label}
       </span>
     </div>
@@ -15,12 +25,15 @@ function CountdownUnit({ value, label }: { value: number; label: string }) {
 }
 
 export default function Hero() {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
   useEffect(() => {
-    // Deadline: June 25, 2026 AoE (UTC-12, effectively June 26 12:00 UTC)
     const deadline = new Date("2026-06-26T12:00:00Z").getTime();
-
     const update = () => {
       const now = Date.now();
       const diff = deadline - now;
@@ -33,7 +46,6 @@ export default function Hero() {
         });
       }
     };
-
     update();
     const interval = setInterval(update, 1000);
     return () => clearInterval(interval);
@@ -49,19 +61,34 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-      {/* Background Image */}
+      {/* Shanghai Skyline Background */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
-        style={{ backgroundImage: "url(/images/hero-bg.jpg)" }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url(/images/shanghai-skyline.png)" }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0A1120]/60 via-[#0A1120]/40 to-[#0A1120]" />
 
-      {/* Floating ambient elements */}
+      {/* Gradient overlays */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(13,27,42,0.3) 0%, rgba(13,27,42,0.5) 30%, rgba(13,27,42,0.75) 60%, rgba(13,27,42,0.95) 100%)",
+        }}
+      />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at center top, rgba(30,122,140,0.15) 0%, transparent 60%)",
+        }}
+      />
+
+      {/* Floating ambient letters */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {["U", "b", "i", "C", "o", "m", "p"].map((letter, i) => (
           <span
             key={letter + i}
-            className="absolute text-[8rem] md:text-[12rem] font-black text-white/[0.02] select-none animate-float"
+            className="absolute text-[8rem] md:text-[12rem] font-black text-white/[0.03] select-none animate-float"
             style={{
               left: `${10 + i * 12}%`,
               top: `${15 + (i % 3) * 25}%`,
@@ -76,39 +103,74 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
-          <span className="w-2 h-2 rounded-full bg-[#F59E0B] animate-pulse" />
-          <span className="text-sm font-medium text-[#94A3B8]">
+        {/* Main conference affiliation badge */}
+        <div
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8"
+          style={{
+            background: "rgba(13, 27, 42, 0.6)",
+            backdropFilter: "blur(12px)",
+            border: "1px solid rgba(42, 157, 176, 0.3)",
+          }}
+        >
+          <span
+            className="w-2 h-2 rounded-full animate-pulse"
+            style={{ background: "#2A9DB0" }}
+          />
+          <span className="text-sm font-medium" style={{ color: "#A0B4C8" }}>
             UbiComp / ISWC 2026 Affiliated Workshop
           </span>
         </div>
 
+        {/* WELCOME TO style text matching main conference */}
+        <p
+          className="text-lg md:text-xl font-semibold tracking-widest uppercase mb-2"
+          style={{ color: "#2A9DB0" }}
+        >
+          Welcome to
+        </p>
+
         {/* Main Title */}
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] tracking-tight mb-6">
+        <h1
+          className="text-4xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight mb-6"
+          style={{ color: "#FFFFFF" }}
+        >
           Towards Trustworthy
           <br />
-          <span className="bg-gradient-to-r from-[#2563EB] via-[#F59E0B] to-[#7C3AED] bg-clip-text text-transparent">
+          <span
+            style={{
+              background:
+                "linear-gradient(90deg, #2A9DB0 0%, #5B4B8A 50%, #7C6BB3 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
             Agentic AI
           </span>
         </h1>
 
-        <p className="text-xl md:text-2xl text-[#94A3B8] font-light max-w-3xl mx-auto mb-8 leading-relaxed">
-          The 1st Workshop and Challenge on Dynamic Evaluation, Execution Safety, and Precision Alignment
+        <p
+          className="text-xl md:text-2xl font-light max-w-3xl mx-auto mb-8 leading-relaxed"
+          style={{ color: "#A0B4C8" }}
+        >
+          The 1st Workshop and Challenge on Dynamic Evaluation, Execution Safety,
+          and Precision Alignment
         </p>
 
         {/* Meta Info */}
-        <div className="flex flex-wrap justify-center gap-6 text-sm text-[#94A3B8] mb-12">
+        <div
+          className="flex flex-wrap justify-center gap-6 text-sm mb-12"
+          style={{ color: "#A0B4C8" }}
+        >
           <span className="flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-[#2563EB]" />
-            October 11 or 12, 2026
+            <Calendar className="w-4 h-4" style={{ color: "#2A9DB0" }} />
+            October 11–12, 2026
           </span>
           <span className="flex items-center gap-2">
-            <MapPin className="w-4 h-4 text-[#2563EB]" />
+            <MapPin className="w-4 h-4" style={{ color: "#2A9DB0" }} />
             Shanghai, China
           </span>
           <span className="flex items-center gap-2">
-            <Building2 className="w-4 h-4 text-[#2563EB]" />
+            <Building2 className="w-4 h-4" style={{ color: "#2A9DB0" }} />
             In-person Workshop
           </span>
         </div>
@@ -120,7 +182,7 @@ export default function Hero() {
           <CountdownUnit value={timeLeft.minutes} label="Minutes" />
           <CountdownUnit value={timeLeft.seconds} label="Seconds" />
         </div>
-        <p className="text-xs text-[#64748B] mb-10 tracking-wide">
+        <p className="text-xs mb-10" style={{ color: "#6B8299" }}>
           Until submission deadline (June 25, 2026 AoE)
         </p>
 
@@ -128,14 +190,24 @@ export default function Hero() {
         <div className="flex flex-wrap justify-center gap-4">
           <button
             onClick={() => scrollTo("#cfp")}
-            className="group px-8 py-4 rounded-xl bg-[#2563EB] text-white font-semibold text-base hover:bg-[#1D4ED8] transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/30 hover:-translate-y-0.5 flex items-center gap-2"
+            className="group px-8 py-4 rounded-xl text-white font-semibold text-base transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-2"
+            style={{
+              background: "linear-gradient(135deg, #1E7A8C 0%, #2A9DB0 100%)",
+              boxShadow: "0 4px 20px rgba(30, 122, 140, 0.4)",
+            }}
           >
             Submit Paper
             <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
           <button
             onClick={() => scrollTo("#challenge")}
-            className="px-8 py-4 rounded-xl bg-white/5 border border-white/10 text-white font-semibold text-base hover:bg-white/10 hover:border-white/20 transition-all duration-300 backdrop-blur-sm"
+            className="px-8 py-4 rounded-xl font-semibold text-base transition-all duration-300 hover:-translate-y-0.5"
+            style={{
+              background: "rgba(255,255,255,0.06)",
+              border: "1px solid rgba(255,255,255,0.15)",
+              color: "#fff",
+              backdropFilter: "blur(10px)",
+            }}
           >
             Challenge Details
           </button>
@@ -143,7 +215,12 @@ export default function Hero() {
       </div>
 
       {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0A1120] to-transparent" />
+      <div
+        className="absolute bottom-0 left-0 right-0 h-32"
+        style={{
+          background: "linear-gradient(to top, #0D1B2A, transparent)",
+        }}
+      />
     </section>
   );
 }

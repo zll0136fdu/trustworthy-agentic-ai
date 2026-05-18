@@ -4,7 +4,7 @@
 
 **Workshop**: The 1st Workshop and Challenge on Dynamic Evaluation, Execution Safety, and Precision Alignment
 
-**Date**: October 11 or 12, 2026
+**Date**: October 11–12, 2026
 
 **Location**: Shanghai, China
 

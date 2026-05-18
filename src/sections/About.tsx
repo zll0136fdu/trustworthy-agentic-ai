@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Shield, Search, Target } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -19,7 +19,7 @@ const cards = [
     title: "Execution Safety",
     description:
       "Safety depends on the whole interaction process—what the agent sees, which tools it uses, and when it should stop—not only the final output.",
-    color: "#2563EB",
+    color: "#1E7A8C",
     bgGlow: "rgba(37, 99, 235, 0.1)",
   },
   {
@@ -36,30 +36,7 @@ export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const section = sectionRef.current;
-    const cardsEl = cardsRef.current;
-    if (!section || !cardsEl) return;
-
-    const cardEls = cardsEl.querySelectorAll(".about-card");
-
-    const ctx = gsap.context(() => {
-      gsap.from(cardEls, {
-        y: 60,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "back.out(1.2)",
-        scrollTrigger: {
-          trigger: section,
-          start: "top 75%",
-          once: true,
-        },
-      });
-    }, section);
-
-    return () => ctx.revert();
-  }, []);
+  // Cards render directly without GSAP opacity animation
 
   return (
     <section
@@ -73,7 +50,7 @@ export default function About() {
           <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
             Workshop Scope
           </h2>
-          <p className="text-lg text-[#94A3B8] max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-[#A0B4C8] max-w-3xl mx-auto leading-relaxed">
             Agent systems are being deployed in phones, wearables, and smart spaces. Because these systems can observe context and take actions, safety depends on the whole interaction process. We need to judge not only what an agent says, but also what it sees, which tools it uses, what actions it takes, and when it should stop or ask for help.
           </p>
         </div>
@@ -121,7 +98,7 @@ export default function About() {
                   </h3>
 
                   {/* Description */}
-                  <p className="text-[#94A3B8] leading-relaxed text-sm">
+                  <p className="text-[#A0B4C8] leading-relaxed text-sm">
                     {card.description}
                   </p>
                 </div>

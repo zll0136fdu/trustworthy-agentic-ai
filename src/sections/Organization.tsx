@@ -12,7 +12,7 @@ const organizers = [
     name: "Jian Zhao",
     affil: "TeleAI, China Telecom; Northwestern Polytechnical University",
     role: "General Co-Chair",
-    roleColor: "#2563EB",
+    roleColor: "#1E7A8C",
     bio: "Works on trustworthy AI, model governance, and safety evaluation. Coordinates the workshop and challenge design.",
   },
   {
@@ -20,7 +20,7 @@ const organizers = [
     name: "Tianle Zhang",
     affil: "TeleAI, China Telecom",
     role: "General Co-Chair",
-    roleColor: "#2563EB",
+    roleColor: "#1E7A8C",
     bio: "Works on robustness, verification, and evaluation for intelligent systems. Supports reliable evaluation and safety guarantees.",
   },
   {
@@ -89,22 +89,8 @@ export default function Organization() {
     const section = sectionRef.current;
     if (!section) return;
 
-    const ctx = gsap.context(() => {
-      gsap.from(".org-card", {
-        y: 50,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.08,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: section,
-          start: "top 70%",
-          once: true,
-        },
-      });
-    }, section);
-
-    return () => ctx.revert();
+    // Cards render directly without GSAP opacity animation to avoid visibility issues
+    void section;
   }, []);
 
   return (
@@ -119,7 +105,7 @@ export default function Organization() {
           <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
             Organizing Committee
           </h2>
-          <p className="text-lg text-[#94A3B8] max-w-2xl mx-auto">
+          <p className="text-lg text-[#A0B4C8] max-w-2xl mx-auto">
             A mix of expertise in agent safety, benchmarking, mobile systems, privacy, and deployment.
           </p>
         </div>
@@ -129,19 +115,19 @@ export default function Organization() {
           {organizers.map((org, index) => (
             <div
               key={org.name}
-              className="org-card group relative rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 cursor-default"
+              className="group relative rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 cursor-default"
               style={{
-                background: "rgba(255,255,255,0.02)",
-                border: "1px solid rgba(255,255,255,0.05)",
+                background: "#162D45",
+                border: "1px solid #3D5A73",
               }}
               onMouseEnter={(e) => {
                 const card = e.currentTarget;
-                card.style.borderColor = `${org.roleColor}40`;
-                card.style.boxShadow = `0 8px 32px ${org.roleColor}15`;
+                card.style.borderColor = `${org.roleColor}80`;
+                card.style.boxShadow = `0 8px 32px ${org.roleColor}30`;
               }}
               onMouseLeave={(e) => {
                 const card = e.currentTarget;
-                card.style.borderColor = "rgba(255,255,255,0.05)";
+                card.style.borderColor = "rgba(255,255,255,0.15)";
                 card.style.boxShadow = "none";
               }}
             >
@@ -149,8 +135,8 @@ export default function Organization() {
               <div
                 className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold text-white transition-transform duration-300 group-hover:scale-110"
                 style={{
-                  background: `linear-gradient(135deg, ${org.roleColor}30 0%, ${org.roleColor}10 100%)`,
-                  border: `2px solid ${org.roleColor}40`,
+                  background: `linear-gradient(135deg, ${org.roleColor}60 0%, ${org.roleColor}30 100%)`,
+                  border: `2px solid ${org.roleColor}80`,
                 }}
               >
                 {org.initials}
@@ -162,7 +148,7 @@ export default function Organization() {
               </h3>
 
               {/* Affiliation */}
-              <p className="text-[#64748B] text-xs text-center leading-relaxed mb-3">
+              <p className="text-[#6B8299] text-xs text-center leading-relaxed mb-3">
                 {org.affil}
               </p>
 
@@ -171,9 +157,9 @@ export default function Organization() {
                 <span
                   className="inline-block px-3 py-1 rounded-full text-[11px] font-semibold tracking-wide"
                   style={{
-                    background: `${org.roleColor}15`,
+                    background: `${org.roleColor}35`,
                     color: org.roleColor,
-                    border: `1px solid ${org.roleColor}25`,
+                    border: `1px solid ${org.roleColor}60`,
                   }}
                 >
                   {org.role}
@@ -187,7 +173,7 @@ export default function Organization() {
                     onClick={() =>
                       setExpandedIndex(expandedIndex === index ? null : index)
                     }
-                    className="flex items-center gap-1 mx-auto text-[#475569] hover:text-[#94A3B8] transition-colors text-xs"
+                    className="flex items-center gap-1 mx-auto text-[#4A6278] hover:text-[#A0B4C8] transition-colors text-xs"
                   >
                     <span>Background</span>
                     <ChevronDown
@@ -203,7 +189,7 @@ export default function Organization() {
                         : "max-h-0 opacity-0"
                     }`}
                   >
-                    <p className="text-[#64748B] text-xs leading-relaxed text-center border-t border-white/5 pt-2">
+                    <p className="text-[#6B8299] text-xs leading-relaxed text-center border-t border-white/10 pt-2">
                       {org.bio}
                     </p>
                   </div>
