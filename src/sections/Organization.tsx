@@ -1,104 +1,107 @@
-import { useState } from "react";
-import { useEffect, useRef } from "react";
+import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ChevronDown } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
+/* ──────────────── DATA ──────────────── */
+
 const organizers = [
-  {
-    initials: "JZ",
-    name: "Jian Zhao",
-    affil: "TeleAI, China Telecom; Northwestern Polytechnical University",
-    role: "General Co-Chair",
-    roleColor: "#1E7A8C",
-    bio: "Works on trustworthy AI, model governance, and safety evaluation. Coordinates the workshop and challenge design.",
-  },
-  {
-    initials: "TZ",
-    name: "Tianle Zhang",
-    affil: "TeleAI, China Telecom",
-    role: "General Co-Chair",
-    roleColor: "#1E7A8C",
-    bio: "Works on robustness, verification, and evaluation for intelligent systems. Supports reliable evaluation and safety guarantees.",
-  },
-  {
-    initials: "HZ",
-    name: "Huilin Zhou",
-    affil: "USTC; TeleAI",
-    role: "Challenge Chair",
-    roleColor: "#F59E0B",
-    bio: "Works on multimodal foundation models and diffusion-model safety. Contributes to the attack track and challenge setup.",
-  },
-  {
-    initials: "WC",
-    name: "Wentao Chen",
-    affil: "CAICT",
-    role: "Challenge Chair",
-    roleColor: "#F59E0B",
-    bio: "Works on large-model safety benchmarking, evaluation, and standards. Brings industrial-scale assessment experience.",
-  },
-  {
-    initials: "JC",
-    name: "Jie Chen",
-    affil: "CAICT",
-    role: "Challenge Chair",
-    roleColor: "#F59E0B",
-    bio: "Works on AI security, agent security assessment, and industrial testing. Contributes enterprise AI evaluation experience.",
-  },
-  {
-    initials: "FW",
-    name: "Feng Wei",
-    affil: "CAICT",
-    role: "Challenge Chair",
-    roleColor: "#F59E0B",
-    bio: "Works on evaluation, benchmarking, and standardization for LLM and AI agent safety and security.",
-  },
-  {
-    initials: "LZ",
-    name: "Lan Zhang",
-    affil: "USTC",
-    role: "PC Member",
-    roleColor: "#7C3AED",
-    bio: "Professor working on mobile sensing, data privacy protection, and data sharing. Multiple papers in top mobile and ubiquitous computing venues.",
-  },
-  {
-    initials: "ZW",
-    name: "Zhibo Wang",
-    affil: "Zhejiang University",
-    role: "PC Member",
-    roleColor: "#7C3AED",
-    bio: "Professor working on intelligent IoT, AI security, data security, and privacy protection. Strong expertise in security systems and large-scale deployment.",
-  },
-  {
-    initials: "XL",
-    name: "Xuelong Li",
-    affil: "TeleAI, China Telecom",
-    role: "Senior Advisor",
-    roleColor: "#059669",
-    bio: "Supports large-scale deployment, industry links, and community outreach.",
-  },
+  { name: "赵健", nameEn: "Jian Zhao", affil: "TeleAI", img: "/trustworthy-agentic-ai/images/people-zhaojian.jpg" },
+  { name: "张天乐", nameEn: "Tianle Zhang", affil: "TeleAI", img: "/trustworthy-agentic-ai/images/people-tianlezhang.jpg" },
+  { name: "郭宏成", nameEn: "Hongcheng Guo", affil: "Fudan University", img: "/trustworthy-agentic-ai/images/people-hongchengguo.png" },
+  { name: "张磊磊", nameEn: "Leilei Zhang", affil: "TeleAI; Fudan University", img: "/trustworthy-agentic-ai/images/people-leileizhang.png" },
+  { name: "周晖林", nameEn: "Huilin Zhou", affil: "TeleAI; USTC", img: "/trustworthy-agentic-ai/images/people-huilinzhou.png" },
+  { name: "陈文弢", nameEn: "Wentao Chen", affil: "CAICT", img: "/trustworthy-agentic-ai/images/people-wentaochen.jpg" },
+  { name: "魏峰", nameEn: "Feng Wei", affil: "CAICT", img: "/trustworthy-agentic-ai/images/people-fengwei.jpg" },
+  { name: "陈杰", nameEn: "Jie Chen", affil: "CAICT", img: "/trustworthy-agentic-ai/images/people-jiechen.png" },
+  { name: "范肇心", nameEn: "Zhaoxin Fan", affil: "BUAA", img: "/trustworthy-agentic-ai/images/people-zhaoxinfan.png" },
+  { name: "张兰", nameEn: "Lan Zhang", affil: "USTC", img: "/trustworthy-agentic-ai/images/people-lanzhang.jpg" },
+  { name: "王志波", nameEn: "Zhibo Wang", affil: "Zhejiang University", img: "/trustworthy-agentic-ai/images/people-zhibowang.jpg" },
+  { name: "冯瑞", nameEn: "Rui Feng", affil: "Fudan University", img: "/trustworthy-agentic-ai/images/people-ruifeng.jpg" },
+  { name: "倪蓉蓉", nameEn: "Rongrong Ni", affil: "BJTU", img: "/trustworthy-agentic-ai/images/people-rongrongni.jpg" },
+  { name: "张洋豪", nameEn: "Yanghao Zhang", affil: "Imperial College London", img: "/trustworthy-agentic-ai/images/people-yanghaozhang.jpg" },
+  { name: "牟容慧", nameEn: "Ronghui Mu", affil: "University of Exeter", img: "/trustworthy-agentic-ai/images/people-ronghuimu.jpg" },
 ];
+
+const advisoryCommittee = [
+  { name: "兴军亮", nameEn: "Junliang Xing", affil: "Tsinghua University", img: "/trustworthy-agentic-ai/images/people-junliangxing.jpg" },
+  { name: "Jane Shen Shengmei", nameEn: "Jane Shen", affil: "Pensees Singapore", img: "/trustworthy-agentic-ai/images/people-janeshen.png" },
+  { name: "颜水成", nameEn: "Shuicheng Yan", affil: "NUS", img: "/trustworthy-agentic-ai/images/people-shuichengyan.png" },
+  { name: "李学龙", nameEn: "Xuelong Li", affil: "TeleAI", img: "/trustworthy-agentic-ai/images/people-xuelongli.jpg" },
+];
+
+/* ──────────────── CARD COMPONENT ──────────────── */
+
+function PersonCard({ person }: { person: (typeof organizers)[0] }) {
+  return (
+    <div
+      className="flex items-center gap-3 p-3 rounded-xl transition-all duration-300 hover:-translate-y-0.5 group"
+      style={{
+        background: "rgba(255,255,255,0.04)",
+        border: "1px solid rgba(255,255,255,0.08)",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.borderColor = "rgba(42, 157, 176, 0.25)";
+        e.currentTarget.style.background = "rgba(255,255,255,0.07)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
+        e.currentTarget.style.background = "rgba(255,255,255,0.04)";
+      }}
+    >
+      {/* Photo */}
+      <div className="shrink-0">
+        <img
+          src={person.img}
+          alt={person.name}
+          className="w-12 h-14 rounded-lg object-cover"
+          style={{
+            border: "2px solid rgba(42, 157, 176, 0.3)",
+          }}
+          onError={(e) => {
+            const el = e.currentTarget;
+            el.style.display = "none";
+            const fallback = el.parentElement?.querySelector(".fallback-avatar") as HTMLElement;
+            if (fallback) fallback.style.display = "flex";
+          }}
+        />
+        <div
+          className="fallback-avatar w-12 h-14 rounded-lg hidden items-center justify-center text-sm font-bold"
+          style={{
+            background: "linear-gradient(135deg, #1E7A8C30 0%, #1E7A8C10 100%)",
+            border: "2px solid #1E7A8C40",
+            color: "#2A9DB0",
+          }}
+        >
+          {person.nameEn.split(" ").map((n) => n[0]).join("")}
+        </div>
+      </div>
+
+      {/* Info */}
+      <div className="min-w-0">
+        <p className="text-white font-semibold text-sm truncate">
+          {person.name}
+        </p>
+        <p className="text-[#6B8299] text-xs truncate">{person.affil}</p>
+      </div>
+    </div>
+  );
+}
+
+/* ──────────────── MAIN COMPONENT ──────────────── */
 
 export default function Organization() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
-
-    // Cards render directly without GSAP opacity animation to avoid visibility issues
     void section;
   }, []);
 
   return (
-    <section
-      id="organization"
-      ref={sectionRef}
-      className="relative py-24 md:py-32"
-    >
+    <section id="organization" ref={sectionRef} className="relative py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -110,93 +113,50 @@ export default function Organization() {
           </p>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {organizers.map((org, index) => (
-            <div
-              key={org.name}
-              className="group relative rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 cursor-default"
+        {/* ─── ORGANIZERS ─── */}
+        <div className="mb-20">
+          <h3
+            className="text-xl font-bold mb-8 flex items-center gap-3"
+            style={{ color: "#2A9DB0" }}
+          >
+            <span
+              className="w-10 h-1 rounded-full"
               style={{
-                background: "#162D45",
-                border: "1px solid #3D5A73",
+                background:
+                  "linear-gradient(90deg, #2A9DB0 0%, #5B4B8A 100%)",
               }}
-              onMouseEnter={(e) => {
-                const card = e.currentTarget;
-                card.style.borderColor = `${org.roleColor}80`;
-                card.style.boxShadow = `0 8px 32px ${org.roleColor}30`;
+            />
+            Organizers
+          </h3>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+            {organizers.map((p) => (
+              <PersonCard key={p.nameEn} person={p} />
+            ))}
+          </div>
+        </div>
+
+        {/* ─── ADVISORY COMMITTEE ─── */}
+        <div>
+          <h3
+            className="text-xl font-bold mb-8 flex items-center gap-3"
+            style={{ color: "#7C6BB3" }}
+          >
+            <span
+              className="w-10 h-1 rounded-full"
+              style={{
+                background:
+                  "linear-gradient(90deg, #7C6BB3 0%, #2A9DB0 100%)",
               }}
-              onMouseLeave={(e) => {
-                const card = e.currentTarget;
-                card.style.borderColor = "rgba(255,255,255,0.15)";
-                card.style.boxShadow = "none";
-              }}
-            >
-              {/* Avatar */}
-              <div
-                className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold text-white transition-transform duration-300 group-hover:scale-110"
-                style={{
-                  background: `linear-gradient(135deg, ${org.roleColor}60 0%, ${org.roleColor}30 100%)`,
-                  border: `2px solid ${org.roleColor}80`,
-                }}
-              >
-                {org.initials}
-              </div>
+            />
+            Advisory Committee
+          </h3>
 
-              {/* Name */}
-              <h3 className="text-white font-bold text-center mb-1 text-base">
-                {org.name}
-              </h3>
-
-              {/* Affiliation */}
-              <p className="text-[#6B8299] text-xs text-center leading-relaxed mb-3">
-                {org.affil}
-              </p>
-
-              {/* Role */}
-              <div className="text-center mb-3">
-                <span
-                  className="inline-block px-3 py-1 rounded-full text-[11px] font-semibold tracking-wide"
-                  style={{
-                    background: `${org.roleColor}35`,
-                    color: org.roleColor,
-                    border: `1px solid ${org.roleColor}60`,
-                  }}
-                >
-                  {org.role}
-                </span>
-              </div>
-
-              {/* Expandable Bio */}
-              {org.bio && (
-                <div>
-                  <button
-                    onClick={() =>
-                      setExpandedIndex(expandedIndex === index ? null : index)
-                    }
-                    className="flex items-center gap-1 mx-auto text-[#4A6278] hover:text-[#A0B4C8] transition-colors text-xs"
-                  >
-                    <span>Background</span>
-                    <ChevronDown
-                      className={`w-3 h-3 transition-transform duration-200 ${
-                        expandedIndex === index ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-                  <div
-                    className={`overflow-hidden transition-all duration-300 ${
-                      expandedIndex === index
-                        ? "max-h-32 opacity-100 mt-2"
-                        : "max-h-0 opacity-0"
-                    }`}
-                  >
-                    <p className="text-[#6B8299] text-xs leading-relaxed text-center border-t border-white/10 pt-2">
-                      {org.bio}
-                    </p>
-                  </div>
-                </div>
-              )}
-            </div>
-          ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            {advisoryCommittee.map((p) => (
+              <PersonCard key={p.nameEn} person={p} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
